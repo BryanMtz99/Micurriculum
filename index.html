@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bryan Martínez García | Programador</title>
+
+    <!-- ICONOS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background: #eef1f5;
+            color: #222;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+
+        .cv {
+            max-width: 1150px;
+            margin: 40px auto;
+            background: white;
+            display: grid;
+            grid-template-columns: 310px 1fr;
+            min-height: 1450px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        }
+
+        /* COLUMNA IZQUIERDA */
+
+        .sidebar {
+            background: #111827;
+            color: white;
+            padding: 40px 28px;
+        }
+
+        .foto {
+            width: 155px;
+            height: 155px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: block;
+            object-fit: cover;
+            border: 5px solid #00c896;
+            background: #1f2937;
+        }
+
+        .nombre {
+            text-align: center;
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .puesto {
+            text-align: center;
+            color: #00c896;
+            margin-top: 8px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .linea {
+            width: 50px;
+            height: 3px;
+            background: #00c896;
+            margin: 25px auto;
+        }
+
+        .sidebar h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+            color: #00c896;
+        }
+
+        .contacto {
+            margin-bottom: 30px;
+        }
+
+        .contacto p {
+            font-size: 13px;
+            margin: 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #d1d5db;
+        }
+
+        .contacto i {
+            width: 20px;
+            color: #00c896;
+        }
+
+        .habilidad {
+            margin-bottom: 17px;
+        }
+
+        .habilidad .titulo {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .barra {
+            height: 6px;
+            background: #374151;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progreso {
+            height: 100%;
+            background: #00c896;
+            border-radius: 5px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tag {
+            background: #1f2937;
+            border: 1px solid #374151;
+            padding: 7px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #d1d5db;
+        }
+
+        /* CONTENIDO */
+
+        .contenido {
+            padding: 50px;
+        }
+
+        .encabezado {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+
+        .encabezado h1 {
+            font-size: 42px;
+            color: #111827;
+        }
+
+        .encabezado h2 {
+            color: #00a77e;
+            font-size: 18px;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .encabezado p {
+            color: #6b7280;
+            margin-top: 15px;
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
+        .titulo-seccion {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .titulo-seccion i {
+            color: #00a77e;
+            font-size: 20px;
+        }
+
+        .titulo-seccion h2 {
+            font-size: 20px;
+            color: #111827;
+        }
+
+        .titulo-seccion::after {
+            content: "";
+            height: 1px;
+            background: #e5e7eb;
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        /* TARJETAS */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            border: 1px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 7px;
+            transition: 0.3s;
+            background: #fff;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-color: #00c896;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .card h4 {
+            color: #00a77e;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* FORMACIÓN */
+
+        .timeline {
+            border-left: 2px solid #00c896;
+            padding-left: 22px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #00c896;
+            border-radius: 50%;
+            left: -28px;
+            top: 5px;
+        }
+
+        .timeline-item h3 {
+            font-size: 16px;
+            color: #111827;
+        }
+
+        .timeline-item span {
+            color: #00a77e;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .timeline-item p {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 7px;
+            line-height: 1.6;
+        }
+
+        /* PROYECTOS */
+
+        .proyecto {
+            padding: 20px;
+            background: #f8fafc;
+            border-left: 4px solid #00c896;
+            margin-bottom: 15px;
+        }
+
+        .proyecto h3 {
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .proyecto p {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .tecnologias {
+            margin-top: 10px;
+            color: #00a77e;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* OBJETIVO */
+
+        .objetivo {
+            background: #f0fdf9;
+            border-left: 4px solid #00c896;
+            padding: 20px;
+            color: #4b5563;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* BOTON */
+
+        .boton {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            background: #00a77e;
+            color: white;
+            border: none;
+            padding: 13px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,.2);
+        }
+
+        .boton:hover {
+            background: #008f6b;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 850px) {
+
+            .cv {
+                grid-template-columns: 1fr;
+                margin: 0;
+            }
+
+            .sidebar {
+                text-align: center;
+            }
+
+            .contacto p {
+                justify-content: center;
+            }
+
+            .tags {
+                justify-content: center;
+            }
+
+            .contenido {
+                padding: 30px 20px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .encabezado h1 {
+                font-size: 32px;
+            }
+        }
+
+        /* IMPRESIÓN */
+
+        @media print {
+
+            body {
+                background: white;
+            }
+
+            .cv {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .boton {
+                display: none;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="cv">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <!-- CAMBIA ESTA FOTO -->
+        <img src="img/foto.jpg" class="foto" alt="Foto de Bryan Martínez García">
+
+        <div class="nombre">
+            Bryan Martínez García
+        </div>
+
+        <div class="puesto">
+            PROGRAMADOR / DESARROLLADOR
+        </div>
+
+        <div class="linea"></div>
+
+        <!-- CONTACTO -->
+
+        <div class="contacto">
+
+            <h3>Contacto</h3>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Puebla, México
+            </p>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                +52 000 000 0000
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                correo@ejemplo.com
+            </p>
+
+            <p>
+                <i class="fa-brands fa-github"></i>
+                github.com/bryan
+            </p>
+
+            <p>
+                <i class="fa-brands fa-linkedin"></i>
+                linkedin.com/in/bryan
+            </p>
+
+        </div>
+
+        <!-- HABILIDADES -->
+
+        <div>
+
+            <h3>Habilidades</h3>
+
+            <div class="habilidad">
+                <div class="titulo">
+                    <span>Java</span>
+                    <span>85%</span>
+                </div>
+
+                <div class="barra">
+                    <div class="progreso" style="width:85%"></div>
+                </div>
+            </div>
+
+            <div class="habilidad">
+                <div class="titulo">
+                    <span>HTML / CSS</span>
+                    <span>90%</span>
+                </div>
+
+                <div class="barra">
+                    <div class="progreso" style="width:90%"></div>
+                </div>
+            </div>
+
+            <div class="habilidad">
+                <div class="titulo">
+                    <span>MySQL</span>
+                    <span>85%</span>
+                </div>
+
+                <div class="barra">
+                    <div class="progreso" style="width:85%"></div>
+                </div>
+            </div>
+
+            <div class="habilidad">
+                <div class="titulo">
+                    <span>JavaScript</span>
+                    <span>75%</span>
+                </div>
+
+                <div class="barra">
+                    <div class="progreso" style="width:75%"></div>
+                </div>
+            </div>
+
+            <div class="habilidad">
+                <div class="titulo">
+                    <span>PHP</span>
+                    <span>70%</span>
+                </div>
+
+                <div class="barra">
+                    <div class="progreso" style="width:70%"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+
+        <!-- TECNOLOGÍAS -->
+
+        <div>
+
+            <h3>Tecnologías</h3>
+
+            <div class="tags">
+
+                <span class="tag">Java</span>
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">PHP</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">Git</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">NetBeans</span>
+                <span class="tag">Visual Studio</span>
+                <span class="tag">Cisco</span>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= CONTENIDO ================= -->
+
+    <main class="contenido">
+
+        <div class="encabezado">
+
+            <h1>Bryan Martínez García</h1>
+
+            <h2>Ingeniería Informática | Desarrollo de Software</h2>
+
+            <p>
+                Estudiante de Ingeniería Informática enfocado en el desarrollo
+                de software, programación, bases de datos y desarrollo web.
+                Interesado en crear soluciones tecnológicas funcionales,
+                modernas y orientadas a resolver problemas reales.
+            </p>
+
+        </div>
+
+
+        <!-- PERFIL -->
+
+        <section>
+
+            <div class="titulo-seccion">
+
+                <i class="fa-solid fa-user"></i>
+
+                <h2>Perfil Profesional</h2>
+
+            </div>
+
+            <p style="color:#6b7280; line-height:1.8; font-size:14px;">
+
+                Estudiante de Ingeniería Informática con conocimientos en
+                programación orientada a objetos, desarrollo de aplicaciones,
+                bases de datos, desarrollo web y redes de computadoras.
+                Cuento con experiencia académica desarrollando sistemas
+                administrativos y aplicaciones conectadas a bases de datos.
+
+                Me caracterizo por mi capacidad para aprender nuevas
+                tecnologías, resolver problemas y trabajar en proyectos
+                orientados a resultados.
+
+            </p>
+
+        </section>
+
+
+        <!-- FORMACIÓN -->
+
+        <section>
+
+            <div class="titulo-seccion">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+                <h2>Formación Académica</h2>
+
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+
+                    <h3>Ingeniería Informática</h3>
+
+                    <span>
+                        [Nombre de tu Universidad] · Puebla, México
+                    </span>
+
+                    <p>
+                        Formación enfocada en programación, ingeniería de
+                        software, bases de datos, redes, desarrollo web,
+                        sistemas de información y tecnologías de la información.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONOCIMIENTOS -->
+
+        <section>
+
+            <div class="titulo-seccion">
+
+                <i class="fa-solid fa-code"></i>
+
+                <h2>Conocimientos Técnicos</h2>
+
+            </div>
+
+            <div class="grid">
+
+                <div class="card">
+
+                    <h3>Programación</h3>
+
+                    <h4>Java · POO · Java Swing</h4>
+
+                    <p>
+                        Desarrollo de aplicaciones, interfaces gráficas,
+                        programación orientada a objetos y manejo de eventos.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Desarrollo Web</h3>
+
+                    <h4>HTML · CSS · JavaScript · PHP</h4>
+
+                    <p>
+                        Creación de páginas web, sistemas administrativos,
+                        formularios e interfaces responsive.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Bases de Datos</h3>
+
+                    <h4>MySQL · SQL · phpMyAdmin</h4>
+
+                    <p>
+                        Diseño de bases de datos, consultas SQL, relaciones
+                        entre tablas y operaciones CRUD.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Redes</h3>
+
+                    <h4>Cisco Packet Tracer</h4>
+
+                    <p>
+                        Configuración básica de redes, VLAN, direccionamiento
+                        IPv4, switches, routers y DHCP.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROYECTOS -->
+
+        <section>
+
+            <div class="titulo-seccion">
+
+                <i class="fa-solid fa-laptop-code"></i>
+
+                <h2>Proyectos Destacados</h2>
+
+            </div>
+
+
+            <div class="proyecto">
+
+                <h3>
+                    Sistema de Control de Expedientes Clínicos
+                </h3>
+
+                <p>
+                    Aplicación para administrar información de pacientes y
+                    expedientes médicos, permitiendo registrar, consultar
+                    y gestionar información mediante una interfaz gráfica.
+                </p>
+
+                <div class="tecnologias">
+                    Java · Java Swing · NetBeans · MySQL
+                </div>
+
+            </div>
+
+
+            <div class="proyecto">
+
+                <h3>
+                    Sistema de Administración de Agua Potable
+                </h3>
+
+                <p>
+                    Sistema web orientado a la administración de usuarios,
+                    contratos, pagos, adeudos, avisos y reportes de un
+                    servicio de agua potable.
+                </p>
+
+                <div class="tecnologias">
+                    HTML · CSS · JavaScript · PHP · MySQL
+                </div>
+
+            </div>
+
+
+            <div class="proyecto">
+
+                <h3>
+                    Configuración de Redes con Cisco Packet Tracer
+                </h3>
+
+                <p>
+                    Diseño y configuración de redes simuladas utilizando
+                    switches, routers, VLAN, direccionamiento IP y DHCP.
+                </p>
+
+                <div class="tecnologias">
+                    Cisco Packet Tracer · IPv4 · VLAN · DHCP
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMPETENCIAS -->
+
+        <section>
+
+            <div class="titulo-seccion">
+
+                <i class="fa-solid fa-star"></i>
+
+                <h2>Competencias</h2>
+
+            </div>
+
+            <div class="grid">
+
+                <div class="card">
+                    <h3>Resolución de problemas</h3>
+                    <p>
+                        Capacidad para analizar problemas y buscar soluciones
+                        utilizando herramientas tecnológicas.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Trabajo en equipo</h3>
+                    <p>
+                        Colaboración en proyectos académicos y desarrollo
+                        conjunto de sistemas.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Aprendizaje continuo</h3>
+                    <p>
+                        Interés constante por aprender nuevos lenguajes,
+                        herramientas y tecnologías.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>Pensamiento lógico</h3>
+                    <p>
+                        Capacidad para estructurar procesos y resolver
+                        problemas mediante programación.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- OBJETIVO -->
+
+        <section>
+
+            <div class="titulo-seccion">
+
+                <i class="fa-solid fa-bullseye"></i>
+
+                <h2>Objetivo Profesional</h2>
+
+            </div>
+
+            <div class="objetivo">
+
+                Busco una oportunidad para desarrollarme profesionalmente
+                dentro del área de tecnologías de la información, participando
+                en proyectos de programación y desarrollo de software donde
+                pueda aplicar mis conocimientos, adquirir experiencia laboral
+                y continuar creciendo como desarrollador.
+
+            </div>
+
+        </section>
+
+
+        <!-- IDIOMAS -->
+
+        <section>
+
+            <div class="titulo-seccion">
+
+                <i class="fa-solid fa-language"></i>
+
+                <h2>Idiomas</h2>
+
+            </div>
+
+            <div class="grid">
+
+                <div class="card">
+
+                    <h3>Español</h3>
+
+                    <p>
+                        Idioma nativo.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Inglés</h3>
+
+                    <p>
+                        Nivel básico / intermedio.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- BOTÓN PDF -->
+
+<button class="boton" onclick="window.print()">
+
+    <i class="fa-solid fa-file-pdf"></i>
+    Guardar como PDF
+
+</button>
